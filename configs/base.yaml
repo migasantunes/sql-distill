@@ -1,0 +1,27 @@
+# Single source of truth for an experiment. Unknown keys are rejected.
+model:
+  student: Qwen/Qwen3-1.7B
+  teacher: claude-sonnet-5-5   # verify the current model ID at M2
+
+datagen:
+  per_db: 70                   # ~10k candidates over the Spider train databases
+  difficulties: [simple, moderate, challenging]
+  filter_level: 2              # 0 none, 1 executes, 2 non-empty, 3 consistent
+  temperature: 0.8
+
+train:
+  lora_r: 16
+  lora_alpha: 32
+  lora_dropout: 0.05
+  lr: 2.0e-4
+  epochs: 3
+  batch_size: 8
+  grad_accum: 2
+  max_seq_len: 2048
+  load_in_4bit: true
+  seed: 0
+
+eval:
+  timeout_s: 10.0
+  max_new_tokens: 256
+  benchmarks: [spider_dev, bird_minidev]
