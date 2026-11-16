@@ -1,0 +1,25 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.pytest_cache/
+.ruff_cache/
+dist/
+build/
+
+# data and model artefacts are never committed
+data/
+outputs/
+checkpoints/
+*.sqlite
+*.db
+*.safetensors
+*.bin
+!tests/**/*.sqlite
+
+# secrets
+.env
+.env.*
+
+.ipynb_checkpoints/
+.DS_Store
